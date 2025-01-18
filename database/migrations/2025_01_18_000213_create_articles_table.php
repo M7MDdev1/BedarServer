@@ -14,12 +14,13 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->string('content');
-            $table->string('status');
+            $table->text('content');
+            $table->enum('status', ['draft', 'published', 'archived','pending'])->default('published');
             $table->timestamps();
         });
+
     }
 
     /**

@@ -9,4 +9,8 @@ class articles extends Model
 {
     /** @use HasFactory<\Database\Factories\ArticlesFactory> */
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
